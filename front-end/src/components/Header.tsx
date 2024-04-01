@@ -13,13 +13,19 @@ const user = { _id: "sf", role: "admin" };
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const logOutHandler = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav className="header">
-      <Link to="/">Home</Link>
-      <Link to="/search">
+      <Link onClick={() => setIsOpen(false)} to="/">
+        Home
+      </Link>
+      <Link onClick={() => setIsOpen(false)} to="/search">
         <FaSearch />
       </Link>
-      <Link to="/cart">
+      <Link onClick={() => setIsOpen(false)} to="/cart">
         <FaCartPlus />
       </Link>
 
@@ -31,12 +37,16 @@ const Header = () => {
           <dialog open={isOpen}>
             <div>
               {user.role === "admin" && (
-                <Link to={"/admin/dashboard"}>Admin</Link>
+                <Link onClick={() => setIsOpen(false)} to={"/admin/dashboard"}>
+                  Admin
+                </Link>
               )}
 
-              <Link to="/orders">Orders</Link>
+              <Link onClick={() => setIsOpen(false)} to="/orders">
+                Orders
+              </Link>
 
-              <button>
+              <button onClick={logOutHandler}>
                 <FaSignOutAlt />
               </button>
             </div>
