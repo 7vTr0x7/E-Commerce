@@ -6,11 +6,15 @@ const Shipping = () => {
     address: "",
     city: "",
     state: "",
-    county: "",
+    country: "",
     pinCode: "",
   });
 
-  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {};
+  const changeHandler = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setShippingInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   return (
     <div className="shipping">
@@ -22,11 +26,48 @@ const Shipping = () => {
         <h1>Shipping Address</h1>
         <input
           type="text"
+          required
           name="address"
           placeholder="address"
           value={shippingInfo.address}
-          onChange={(e) => changeHandler(e.target.value)}
+          onChange={changeHandler}
         />
+        <input
+          type="text"
+          required
+          name="city"
+          placeholder="city"
+          value={shippingInfo.city}
+          onChange={changeHandler}
+        />
+        <input
+          type="text"
+          required
+          name="state"
+          placeholder="state"
+          value={shippingInfo.state}
+          onChange={changeHandler}
+        />
+
+        <select
+          name="country"
+          required
+          value={shippingInfo.country}
+          onChange={changeHandler}>
+          <option value="">Choose Country</option>
+          <option value="india">India</option>
+        </select>
+
+        <input
+          type="text"
+          required
+          name="pinCode"
+          placeholder="pinCode"
+          value={shippingInfo.pinCode}
+          onChange={changeHandler}
+        />
+
+        <button type="submit">Pay Now</button>
       </form>
     </div>
   );
