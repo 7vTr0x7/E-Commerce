@@ -1,13 +1,12 @@
-import toast from "react-hot-toast";
 import { BiMaleFemale } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
-import { useSelector } from "react-redux";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 import { BarChart, DoughnutChart } from "../../components/admin/Charts";
 import Table from "../../components/admin/DashboardTable";
-import Loader from "../../components/admin/Loader";
+
+import data from "../../assets/data.json";
 
 const userImg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJxA5cTf-5dh5Eusm0puHbvAhOrCRPtckzjA&usqp";
@@ -98,7 +97,7 @@ const Dashboard = () => {
               <BiMaleFemale />
             </p>
           </div>
-          <Table data={transaction} />
+          <Table data={data.transaction} />
         </section>
       </main>
     </div>
@@ -142,13 +141,11 @@ const WidgetItem = ({
         ${color} ${(Math.abs(percent) / 100) * 360}deg,
         rgb(255, 255, 255) 0
       )`,
-      }}
-    >
+      }}>
       <span
         style={{
           color,
-        }}
-      >
+        }}>
         {percent}%
       </span>
     </div>
@@ -169,8 +166,7 @@ const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
         style={{
           backgroundColor: color,
           width: `${value}%`,
-        }}
-      ></div>
+        }}></div>
     </div>
     <span>{value}%</span>
   </div>

@@ -57,9 +57,8 @@ const AdminSidebar = () => {
                 transition: "all 0.5s",
               }
             : {}
-        }
-      >
-        <h2>Logo.</h2>
+        }>
+        <h2>Dashboard.</h2>
         <DivOne location={location} />
         <DivTwo location={location} />
         <DivThree location={location} />
@@ -170,14 +169,12 @@ const Li = ({ url, text, location, Icon }: LiProps) => (
       backgroundColor: location.pathname.includes(url)
         ? "rgba(0,115,255,0.1)"
         : "white",
-    }}
-  >
+    }}>
     <Link
       to={url}
       style={{
         color: location.pathname.includes(url) ? "rgb(0,115,255)" : "black",
-      }}
-    >
+      }}>
       <Icon />
       {text}
     </Link>
